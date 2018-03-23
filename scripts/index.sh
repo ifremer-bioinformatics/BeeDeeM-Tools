@@ -43,7 +43,7 @@ function error() {
 }
 
 # *** Application home
-KL_APP_HOME=/appli/bioinfo/blast-strategy/1.0.0
+KL_APP_HOME=$( cd -P -- "$(dirname -- "$(command -v -- "$0")")" && pwd -P )
 
 # *** Working directory for log file 
 KL_WORKING_DIR=
