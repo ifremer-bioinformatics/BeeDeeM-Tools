@@ -1,0 +1,14 @@
+This is PLAST v2.3.0 library to be used for Java integration.
+
+Inria/Genscale Team provides PLAST binaries for "older" Linux and MacOSX systems to enable 
+its use more easily:
+
++ MacOSX library created on OS 10.7.5 (gcc 4.2) 
+
++ Linux library created on CentOS release 6.3 (gcc 4.2.1 ; kernel 2.6.32-279.el6.x86_64 ; 
+  GLIBCXX_3.4.13 ; libstdc++.so.6)  
+
+On windows, PLAST binary is produced for recent 64bit releases:
+
+Windows: created on Windows 7.1 64bits, MinGW-64/gcc 5.2
+ 

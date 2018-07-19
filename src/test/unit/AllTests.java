@@ -29,7 +29,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({
   CmdLineCutterTest.class,
   CmdLineIndexerTest.class,
-  CmdLineUserQueryTest.class
+  CmdLineUserQueryTest.class,
+  PlastRunnerTest.class
   })
 public class AllTests {
 
