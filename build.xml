@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- ============================================================= -->
+<project name="BeeDeeM-Tools" default="help" basedir=".">
+
+	<property name="lbasedir" value="${basedir}" />
+
+	<property name="compile.optimize" value="on" />
+	<property name="compile.debug" value="off" />
+	<property name="compile.deprecation" value="off" />
+
+	<property file="${basedir}/src/fr/ifremer/bioinfo/resources/version.properties" />
+
+	<property name="src" value="${lbasedir}/src" />
+	<property name="jar" value="${lbasedir}/jar" />
+	<property name="lib" value="${lbasedir}/lib" />
+	<property name="scripts" value="${lbasedir}/scripts" />
+
+	<property name="distrib" value="${lbasedir}/distrib" />
+
+	<property name="Dsrc" value="${distrib}/src" />
+	<property name="Dbin" value="${distrib}/bin" />
+	<property name="Dlib" value="${distrib}/lib" />
+	<property name="Dtr" value="${distrib}/tests-result" />
+  <property name="Dscripts" value="${distrib}/scripts" />
+  <property name="Dnative" value="${distrib}/native" />
+
+	<property name="appname" value="${prg.name}-${prg.version}" />
+	<property name="appjar" value="${appname}.jar" />
+	<property name="apptar" value="${appname}.tar" />
+
+	<property name="rootpkg" value="fr.ifremer.bioinfo.bdm.tools" />
+	<property name="CutterClass" value="${rootpkg}.CmdLineCutter" />
+	<property name="IndexerClass" value="${rootpkg}.CmdLineIndexer" />
+	<property name="QueryClass" value="${rootpkg}.CmdLineUserQuery" />
+
+	<path id="class.path">
+		<pathelement path="${classpath}" />
+		<fileset dir="${jar}">
+			<include name="**/*.jar" />
+		</fileset>
+		<pathelement location="${lib}" />
+	</path>
+
+	<path id="distribClass.path">
+		<fileset dir="${distrib}/bin">
+			<include name="**/*.jar" />
+		</fileset>
+		<pathelement location="${distrib}/lib" />
+	</path>
+
+	<!-- ============================================================= -->
+	<target name="help">
+		<echo>This is the Ant's project file to manage BeeDeeM-Tools.</echo>
+		<echo />
+		<echo>Available targets are:</echo>
+		<echo>        makejar: only compile and package BDM-Tools jar</echo>
+		<echo>    makedistrib: prepare the full release file</echo>
+		<echo>             ut: compile software and run unit tests</echo>
+		<echo />
+	</target>
+	
+  <!-- ============================================================= -->
+  <!-- check Ant and Java version                                    -->
+  <target name="checkversion">
+    <echo>Current Ant version is: ${ant.version}</echo>
+    <fail message="***   Ant 1.9.1+ required   ***">
+      <!-- ant 1.9.1 introduced unless directive used in this script-->
+      <condition>
+        <not>
+          <antversion atleast="1.9.1" />
+        </not>
+      </condition>
+    </fail>
+    <echo>  ok</echo>
+    <echo>Current Java version is: ${ant.java.version}</echo>
+    <fail message="***   Oracle Java SDK 1.8+ not found   ***">
+      <condition>
+        <not>
+          <or>
+            <equals arg1="1.8" arg2="${ant.java.version}" />
+            <equals arg1="1.9" arg2="${ant.java.version}" />
+          </or>
+        </not>
+      </condition>
+    </fail>
+    <echo>  ok</echo>
+  </target>
+
+	<!-- ============================================================= -->
+	<!-- Prepare directory structure used to compile and package sof   -->
+	<target name="prepare" depends="checkversion">
+		<!-- Prepare the distrib directory tree -->
+		<delete dir="${distrib}" />
+		<mkdir dir="${Dsrc}" />
+		<mkdir dir="${Dbin}" />
+		<mkdir dir="${Dlib}" />
+    <mkdir dir="${Dnative}" />
+	</target>
+
+  <!-- ============================================================= -->
+  <!-- Compile code and make software Jar                            -->
+	<target name="makejar" depends="prepare">
+		<!-- Copy all necessary jar files (third party librairies) -->
+		<copy todir="${Dbin}">
+			<fileset dir="${jar}" >
+				<exclude name="junit*" />
+			</fileset>
+		</copy>
+		<!-- Copy Java source code files -->
+		<copy todir="${Dsrc}">
+			<fileset dir="${src}">
+				<exclude name="test/**" />
+			</fileset>
+		</copy>
+		<!-- Compile source code ready for distribution-->
+		<javac srcdir="${Dsrc}" 
+	           destdir="${Dlib}" 
+	           classpathref="distribClass.path" 
+	           debug="${compile.debug}" 
+	           optimize="${compile.optimize}" 
+	           deprecation="${compile.deprecation}">
+		</javac>
+		<copy todir="${Dlib}">
+			<fileset dir="${src}">
+				<include name="**/*.properties" />
+			</fileset>
+		</copy>
+		<!-- Make the Jar for the full application -->
+		<jar destfile="${Dbin}/${appjar}">
+			<fileset dir="${Dlib}" />
+			<manifest>
+				<attribute name="Built-By" value="IFREMER Bioinformatics Team" />
+			</manifest>
+		</jar>
+	</target>
+
+	<!-- ============================================================= -->
+  <!-- Compile code and make software dustribution package           -->
+	<target name="makedistrib" depends="makejar">
+		<!-- Copy the cmdline scripts for Mac and Linux -->
+    <copy todir="${distrib}">
+      <fileset dir="${scripts}">
+        <include name="**/*.sh" />
+      </fileset>
+    </copy>
+    <!-- Copy the PLAST native c++ lib for Mac and Linux -->
+    <copy todir="${Dnative}">
+      <fileset dir="${lbasedir}/native">
+        <include name="**/*" />
+      </fileset>
+    </copy>
+
+		<!-- Copy license files-->
+		<copy file="${lbasedir}/LICENSE.txt" todir="${distrib}/license" />
+		<copy file="${lbasedir}/NOTICE.txt" todir="${distrib}/license" />
+
+		<!-- remove useless data -->
+		<delete dir="${Dlib}" />
+		<delete dir="${Dsrc}" />
+		<tar tarfile="${distrib}/${apptar}" basedir="${distrib}" />
+		<gzip zipfile="${distrib}/${apptar}.gz" src="${distrib}/${apptar}" />
+		<delete file="${distrib}/${apptar}" />
+		<delete dir="${Dbin}" />
+		<delete dir="${Dnative}" />
+		<delete dir="${Dlicense}" />
+		<delete>
+		    <fileset dir="${distrib}" includes="*.sh*" />
+		</delete>
+	</target>
+
+	<!-- ============================================================= -->
+	<!-- Compile code and run Unit Tests                               -->
+	<target name="ut" depends="prepare">
+		<!-- Ant/JUnit doc: https://ant.apache.org/manual/Tasks/junit.html -->
+		<mkdir dir="${Dtr}" />
+		<!-- Copy all necessary jar files (third party librairies) -->
+		<copy todir="${Dbin}">
+			<fileset dir="${jar}">
+				<exclude name="ant*" />
+			</fileset>
+		</copy>
+		<!-- Copy Java source code files -->
+		<copy todir="${Dsrc}">
+			<fileset dir="${src}" />
+		</copy>
+		<!-- Compile source code ready for distribution-->
+		<javac srcdir="${Dsrc}" 
+             destdir="${Dlib}" 
+             classpathref="distribClass.path" 
+             debug="on" 
+             optimize="off" 
+             deprecation="off">
+		</javac>
+		<!-- Copy resource files -->
+		<copy todir="${Dlib}">
+			<fileset dir="${src}">
+				<include name="**/*.properties" />
+			</fileset>
+		</copy>
+		<!-- Start Test Suite -->
+		<antcall target="ut2" />
+	</target>
+
+	<target name="ut2">
+		<junit printsummary="yes" fork="yes" haltonfailure="yes">
+			<classpath>
+				<path refid="distribClass.path"/>
+			</classpath>
+			<formatter type="plain"/>
+			<test name="test.unit.AllTests" todir="${Dtr}"/>
+		</junit>
+		<echo>Test results are in: ${Dtr}</echo>
+	</target>
+
+</project>
