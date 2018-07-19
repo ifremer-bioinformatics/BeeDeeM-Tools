@@ -14,7 +14,7 @@
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Affero General Public License for more details.
  */
-package fr.ifremer.bioinfo.blast.resources;
+package fr.ifremer.bioinfo.resources;
 
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;

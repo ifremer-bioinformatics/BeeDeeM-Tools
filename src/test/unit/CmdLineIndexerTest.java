@@ -1,7 +1,7 @@
 package test.unit;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 
@@ -14,7 +14,7 @@ import org.junit.Test;
 import com.plealog.genericapp.api.file.EZFileUtils;
 
 import bzh.plealog.dbmirror.indexer.LuceneUtils;
-import fr.ifremer.bioinfo.blast.CmdLineIndexer;
+import fr.ifremer.bioinfo.bdm.tools.CmdLineIndexer;
 
 /**
  * A class to test CmdLineIndexer tool. Please note that unit tests for the entire

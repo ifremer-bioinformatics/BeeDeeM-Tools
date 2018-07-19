@@ -90,6 +90,6 @@ KL_JAR_LIST_TMP=`\ls $KL_APP_HOME/bin/*.jar`
 KL_JAR_LIST=`echo $KL_JAR_LIST_TMP | sed 's/ /:/g'`
 
 # *** start application
-KL_APP_MAIN_CLASS=fr.ifremer.bioinfo.blast.CmdLineCutter
+KL_APP_MAIN_CLASS=fr.ifremer.bioinfo.bdm.tools.CmdLineCutter
 $KL_JAVA_VM $KL_JAVA_ARGS -classpath $KL_JAR_LIST $KL_APP_MAIN_CLASS -i $SEQ_FILE
 

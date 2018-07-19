@@ -14,7 +14,7 @@
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Affero General Public License for more details.
  */
-package fr.ifremer.bioinfo.blast;
+package fr.ifremer.bioinfo.bdm.tools;
 
 import java.io.File;
 import java.util.Hashtable;
@@ -37,8 +37,7 @@ import bzh.plealog.dbmirror.util.log.LoggerCentral;
 import bzh.plealog.dbmirror.util.sequence.SequenceFileManager;
 import bzh.plealog.dbmirror.util.sequence.SequenceValidatorCutFile;
 import bzh.plealog.dbmirror.util.sequence.SequenceValidatorPaginate;
-
-import fr.ifremer.bioinfo.blast.resources.CmdMessages;
+import fr.ifremer.bioinfo.resources.CmdMessages;
 
 /**
  * A utility class to cut a sequence file.<br>

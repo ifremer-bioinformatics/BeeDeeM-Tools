@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import com.plealog.genericapp.api.file.EZFileUtils;
 
-import fr.ifremer.bioinfo.blast.CmdLineCutter;
+import fr.ifremer.bioinfo.bdm.tools.CmdLineCutter;
 
 /**
  * A class to test CmdLineCutter tool. Please note that unit tests for the entire

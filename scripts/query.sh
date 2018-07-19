@@ -109,6 +109,6 @@ if [ $GET_COMPLEMENT -eq 1  ]; then
 fi
 
 # *** start application
-KL_APP_MAIN_CLASS=fr.ifremer.bioinfo.blast.CmdLineUserQuery
+KL_APP_MAIN_CLASS=fr.ifremer.bioinfo.bdm.tools.CmdLineUserQuery
 $KL_JAVA_VM $KL_JAVA_ARGS -classpath $KL_JAR_LIST $KL_APP_MAIN_CLASS $CMD_ARGS
 

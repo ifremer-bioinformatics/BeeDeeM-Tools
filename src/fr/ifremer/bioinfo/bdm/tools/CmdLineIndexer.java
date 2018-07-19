@@ -14,7 +14,7 @@
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Affero General Public License for more details.
  */
-package fr.ifremer.bioinfo.blast;
+package fr.ifremer.bioinfo.bdm.tools;
 
 import java.io.File;
 
@@ -37,8 +37,7 @@ import bzh.plealog.dbmirror.main.StarterUtils;
 import bzh.plealog.dbmirror.util.conf.DBMSAbstractConfig;
 import bzh.plealog.dbmirror.util.descriptor.DatabankFormat;
 import bzh.plealog.dbmirror.util.log.LoggerCentral;
-
-import fr.ifremer.bioinfo.blast.resources.CmdMessages;
+import fr.ifremer.bioinfo.resources.CmdMessages;
 
 /**
  * A utility class to index a sequence file.<br>

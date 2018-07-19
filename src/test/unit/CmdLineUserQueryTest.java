@@ -13,8 +13,8 @@ import org.junit.Test;
 import com.plealog.genericapp.api.file.EZFileUtils;
 
 import bzh.plealog.dbmirror.indexer.LuceneUtils;
-import fr.ifremer.bioinfo.blast.CmdLineIndexer;
-import fr.ifremer.bioinfo.blast.CmdLineUserQuery;
+import fr.ifremer.bioinfo.bdm.tools.CmdLineIndexer;
+import fr.ifremer.bioinfo.bdm.tools.CmdLineUserQuery;
 
 /**
  * A class to test CmdLineIndexer tool. Please note that unit tests for the entire

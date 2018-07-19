@@ -115,6 +115,6 @@ if [ $? != 0  ]; then
 fi
 
 # *** start application
-KL_APP_MAIN_CLASS=fr.ifremer.bioinfo.blast.CmdLineIndexer
+KL_APP_MAIN_CLASS=fr.ifremer.bioinfo.bdm.tools.CmdLineIndexer
 $KL_JAVA_VM $KL_JAVA_ARGS -classpath $KL_JAR_LIST $KL_APP_MAIN_CLASS -i $SEQ_FILE_LINK
 

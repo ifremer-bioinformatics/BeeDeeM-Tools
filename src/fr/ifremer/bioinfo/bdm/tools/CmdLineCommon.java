@@ -14,11 +14,11 @@
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Affero General Public License for more details.
  */
-package fr.ifremer.bioinfo.blast;
+package fr.ifremer.bioinfo.bdm.tools;
 
 import bzh.plealog.dbmirror.util.conf.DBMSAbstractConfig;
 import bzh.plealog.dbmirror.util.log.LoggerCentral;
-import fr.ifremer.bioinfo.blast.resources.CmdMessages;
+import fr.ifremer.bioinfo.resources.CmdMessages;
 
 /**
  * Utility methods for command line tools
