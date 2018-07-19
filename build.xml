@@ -209,6 +209,7 @@
 			</classpath>
 			<formatter type="plain"/>
 			<test name="test.unit.AllTests" todir="${Dtr}"/>
+			<jvmarg value="-Djava.library.path=native"/>
 		</junit>
 		<echo>Test results are in: ${Dtr}</echo>
 	</target>
