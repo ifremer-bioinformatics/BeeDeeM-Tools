@@ -5,17 +5,17 @@
 # Copyright (c) - IFREMER Bioinformatics, 2018
 # -------------------------------------------------------------------
 # User manual:
-#   https://github.com/ifremer-bioinformatics 
+#   https://gitlab.ifremer.fr/bioinfo/BeeDeeM-Tools 
 # -------------------------------------------------------------------
-# A utility class to query a sequence index.
+# A script to query a sequence index.
 #  
 # Sample uses:
-# CmdLineUserQuery -d tests/databank/fasta_prot/uniprot.faa.ld -i M4K2_HUMAN
+# query.sh -d tests/databank/fasta_prot/uniprot.faa.ld -i M4K2_HUMAN
 #   -> retrieve sequence M4K2_HUMAN from index
-# CmdLineUserQuery -d tests/databank/fasta_prot/uniprot.faa.ld -c -i M4K2_HUMAN
+# query.sh -d tests/databank/fasta_prot/uniprot.faa.ld -c -i M4K2_HUMAN
 #   -> retrieve complement of sequence M4K2_HUMAN from index, i.e. retrieve ALL
 #      sequences BUT M4K2_HUMAN
-# CmdLineUserQuery -d tests/databank/fasta_prot/uniprot.faa.ld -f tests/databank/fasta_prot/fo-seqids.txt
+# query.sh -d tests/databank/fasta_prot/uniprot.faa.ld -f tests/databank/fasta_prot/fo-seqids.txt
 #   -> retrieve from index sequence(s) identified from IDs contained in file
 #      fo-seqids.txt 
 # 
@@ -39,9 +39,9 @@
 
 function help(){
   printf "\n$0: a tool to query a sequence index.\n\n"
-  printf "usage: $0 [-h] -w <working-directory> -d <sequence-file> [-c] -i <ID>  \n"
+  printf "usage: $0 [-h] -w <working-directory> -d <index-directory> [-c] -i <ID>  \n"
   printf "or \n"
-  printf "usage: $0 [-h] -w <working-directory> -d <sequence-file> [-c] -f <FileOfIds>  \n\n"
+  printf "usage: $0 [-h] -w <working-directory> -d <index-directory> [-c] -f <FileOfIds>  \n\n"
   exit 1
 }
 

@@ -5,16 +5,16 @@
 # Copyright (c) - IFREMER Bioinformatics, 2018
 # -------------------------------------------------------------------
 # User manual:
-#   https://github.com/ifremer-bioinformatics 
+#   https://gitlab.ifremer.fr/bioinfo/BeeDeeM-Tools 
 # -------------------------------------------------------------------
-# A utility class to cut a sequence file.
-# * 
+# A script to cut a sequence file.
+#  
 # Sample uses: 
-# CmdLineCutter -i tests/databank/fasta_prot/uniprot.faa -f 3
+# cut.sh -i tests/databank/fasta_prot/uniprot.faa -k fa -f 3
 # to get 3rd sequence up to the end of input file
 # -> result file will be here: tests/databank/fasta_prot/uniprot_3-end.faa
 #
-# CmdLineCutter -i tests/databank/fasta_prot/uniprot.faa -p 5
+# CmdLineCutter -i tests/databank/fasta_prot/uniprot.faa -k fa -p 5
 # cut input file into several parts, each of them containing 5 sequences
 # -> result files will be (sample source file contains 10 sequences): 
 # a. tests/databank/fasta_prot/uniprot_1-5.faa
@@ -36,7 +36,14 @@
 
 function help(){
   printf "\n$0: a tool to cut a sequence file.\n\n"
-  printf "usage: $0 [-h] -w <working-directory> -i <sequence-file> \n\n"
+  printf "Note: new files are created next to input sequence file.\n\n"
+  printf "usage: $0 [-h] -w <working-directory> -i <sequence-file> -k <format> -f 3\n"
+  printf "        get 3rd sequence up to the end of input file \n\n"
+  printf "usage: $0 [-h] -w <working-directory> -i <sequence-file> -k <format> -f 5 -t 10\n"
+  printf "        get 3rd sequence up to the 10th sequence of input file \n\n"
+  printf "usage: $0 [-h] -w <working-directory> -i <sequence-file> -k <format> -p 5\n"
+  printf "        cut input file into several parts, each of them containing 5 sequences \n\n"
+  printf "       <format>: one of fa, fq, gb, em\n\n"
   exit 1
 }
 
@@ -53,12 +60,21 @@ KL_WORKING_DIR=
 # *** Sequence file to cut; default is none
 SEQ_FILE=
 
+# *** Sequence file format; default is FASTA
+SEQ_FORMAT="fa"
+
+ARGS_LINE=" "
+
 # *** Handle cmdline arguments
-while getopts hw:i:d: opt
+while getopts hw:i:f:t:p: opt
 do
     case "$opt" in
+      p)  ARGS_LINE="$ARGS_LINE -p $OPTARG";;
+      f)  ARGS_LINE="$ARGS_LINE -f $OPTARG";;
+      t)  ARGS_LINE="$ARGS_LINE -t $OPTARG";;
       i)  SEQ_FILE="$OPTARG";;
       w)  KL_WORKING_DIR="$OPTARG";;
+      f)  SEQ_FORMAT="$OPTARG";;
       h)  help;;
       \?) help;;
     esac
@@ -91,5 +107,5 @@ KL_JAR_LIST=`echo $KL_JAR_LIST_TMP | sed 's/ /:/g'`
 
 # *** start application
 KL_APP_MAIN_CLASS=fr.ifremer.bioinfo.bdm.tools.CmdLineCutter
-$KL_JAVA_VM $KL_JAVA_ARGS -classpath $KL_JAR_LIST $KL_APP_MAIN_CLASS -i $SEQ_FILE
+$KL_JAVA_VM $KL_JAVA_ARGS -classpath $KL_JAR_LIST $KL_APP_MAIN_CLASS -d $KL_WORKING_DIR -i $SEQ_FILE -k $SEQ_FORMAT $ARGS_LINE
 

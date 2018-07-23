@@ -5,13 +5,13 @@
 # Copyright (c) - IFREMER Bioinformatics, 2018
 # -------------------------------------------------------------------
 # User manual:
-#   https://github.com/ifremer-bioinformatics 
+#   https://gitlab.ifremer.fr/bioinfo/BeeDeeM-Tools 
 # -------------------------------------------------------------------
-# A utility class to index a sequence file.
+# A script to index a sequence file.
 #  
 #  
 # Sample use:
-# CmdLineIndexer -d <index-directory> -i tests/databank/fasta_prot/uniprot.faa
+#   index.sh -d <index-directory> -i tests/databank/fasta_prot/uniprot.faa
 # Supported format: Embl, Genbank, Fasta
 # Note: environment variables are accepted in file path.
 # 

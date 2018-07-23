@@ -24,6 +24,7 @@
 	<property name="Dtr" value="${distrib}/tests-result" />
   <property name="Dscripts" value="${distrib}/scripts" />
   <property name="Dnative" value="${distrib}/native" />
+  <property name="Ddata" value="${distrib}/data" />
 
 	<property name="appname" value="${prg.name}-${prg.version}" />
 	<property name="appjar" value="${appname}.jar" />
@@ -95,6 +96,7 @@
 		<mkdir dir="${Dsrc}" />
 		<mkdir dir="${Dbin}" />
 		<mkdir dir="${Dlib}" />
+    <mkdir dir="${Ddata}" />
     <mkdir dir="${Dnative}" />
 	</target>
 
@@ -148,6 +150,12 @@
     <copy todir="${Dnative}">
       <fileset dir="${lbasedir}/native">
         <include name="**/*" />
+      </fileset>
+    </copy>
+    <!-- Copy the PLAST banks to enable test on sample data -->
+    <copy todir="${Ddata}">
+      <fileset dir="${lbasedir}/tests/databank/plast">
+        <include name="**/*.fa" />
       </fileset>
     </copy>
 
