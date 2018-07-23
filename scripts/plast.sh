@@ -12,16 +12,14 @@
 # Sample uses:
 # plast.sh -p plastp -i tests/databank/plast/query.fa -d tests/databank/plast/tursiops.fa -o ztest.xml -a 8 -maxhits 5 -maxhsps 1 -e 1e-5 -F F
 # 
+# In addition, set a multi-thread safe working directory using
+# the following environment variable:
+#   KL_WORKING_DIR=an_absolute_path 
+#  if not set, log and working directories are set to /tmp/plast
+#  (each PLAST job should write to its own KL_WORKING_DIR)
+#
 # Use program with -h argument to get help.
 # Note: environment variables are accepted in file path.
-# 
-# In addition, some parameters can be passed to the JVM for special 
-# configuration purposes:
-# -DKL_DEBUG=true ; if true, if set, log will be in debug mode
-# -DKL_WORKING_DIR=an_absolute_path ; if not set, log and working 
-#  directories are set to java.io.tmp
-# -DKL_LOG_FILE=a_file_name ; if set, creates a log file with that 
-#  name within KL_WORKING_DIR
 #
 
 function help(){

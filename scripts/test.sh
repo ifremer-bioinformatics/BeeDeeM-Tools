@@ -105,6 +105,7 @@ else
 fi
 
 # *** TEST 4/4: run PLASTp
+echo "> 4/4 Running 'plast.sh' tool:"
 export KL_WORKING_DIR=$KL_WORKING_DIR
 CMD="$KL_APP_HOME/plast.sh -p plastp -i $KL_APP_HOME/data/query.fa -d $KL_APP_HOME/data/tursiops.fa -o $KL_WORKING_DIR/bdm-tools-plast.xml -a 8 -maxhits 5 -maxhsps 1 -e 1e-5 -F F"
 echo "$CMD"
