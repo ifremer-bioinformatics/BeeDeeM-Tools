@@ -3,11 +3,13 @@ package fr.ifremer.bioinfo.plast;
 import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
+import org.apache.commons.lang.time.DateUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.inria.genscale.dbscan.api.IRequest;
@@ -264,6 +266,8 @@ public class PlastRunner {
 
 		/** STEP 4: provide search summary in log file and save a data file... */
     msg = String.format(CmdMessages.getString("Tool.Plast.msg5"), pr.getQueries());
+    LoggerCentral.info(LOGGER, msg);    
+    msg = String.format(CmdMessages.getString("Tool.Plast.msg10"), pr.getMatchingQueries());
     LoggerCentral.info(LOGGER, msg);
     msg = String.format(CmdMessages.getString("Tool.Plast.msg6"), pr.getHits());
     LoggerCentral.info(LOGGER, msg);
@@ -289,7 +293,9 @@ public class PlastRunner {
 		 * applications, such as GUI-based that may run many jobs in the row. Not doing the following
 		 * call may results in weird application behavior, including crash!*/
 		req.removeListener(pr);
-
+		
+		LoggerCentral.info(LOGGER, msg);
+		
 		return bRet;
 	}
 
@@ -343,7 +349,13 @@ public class PlastRunner {
     filter = cmdLine.getOptionValue(FILTER_ARG);
     
     // GO!
-    return new PlastRunner().runPlast(prgm, query, subject, output, cores, max_hits, max_hsps, evalue, seeds, filter);
+    PlastRunner runner = new PlastRunner();
+    long tim = System.currentTimeMillis();
+    boolean bRet = runner.runPlast(prgm, query, subject, output, cores, max_hits, max_hsps, evalue, seeds, filter);
+    msg = CmdLineCommon.getRunningTime((System.currentTimeMillis()-tim)/1000l);
+    msg = String.format(CmdMessages.getString("Tool.Plast.msg11"), msg);
+    LoggerCentral.info(LOGGER, msg);
+    return bRet;
   }
   
 	/**

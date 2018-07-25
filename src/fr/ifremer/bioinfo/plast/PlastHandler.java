@@ -37,6 +37,7 @@ public class PlastHandler implements IRequestListener {
   private int nb_hits;
   private int nb_hsps;
   private int nb_queries;
+  private int nb_matching_queries;
   private SROutput _srOutput;
   private String _prgName;
   private String _dbName;
@@ -56,7 +57,7 @@ public class PlastHandler implements IRequestListener {
   private PlastHandler() {
     _srFactory = CoreSystemConfigurator.getSRFactory();
     _srOutputCreated = false;
-    nb_hits = nb_hsps = nb_queries = 0;
+    nb_hits = nb_hsps = nb_queries = nb_matching_queries = 0;
     _firstTime = true;
   }
 
@@ -102,6 +103,16 @@ public class PlastHandler implements IRequestListener {
    */
   public int getQueries() {
     return nb_queries;
+  }
+
+  /**
+   * Get total of matching queries. Call this method after PLAST job
+   * has terminated.
+   * 
+   * @return number of queries
+   */
+  public int getMatchingQueries() {
+    return nb_matching_queries;
   }
 
   /**
@@ -373,6 +384,9 @@ public class PlastHandler implements IRequestListener {
       srIter = addIteration(_srOutput, query.getSequence().getId(), 
           query.getSequence().getDefinition(), query.getSequence().getLength());
       
+      if (query.hasNext()) {
+        nb_matching_queries++;
+      }
       /* ... for each query we may have several hits... */
       while (query.hasNext()) {
         org.inria.genscale.dbscan.api.IHit hit = query.next();
