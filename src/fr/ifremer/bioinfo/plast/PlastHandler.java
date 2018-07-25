@@ -302,9 +302,12 @@ public class PlastHandler implements IRequestListener {
     ri.setValue(SRRequestInfo.QUERY_DEF_DESCRIPTOR_KEY, query.getSequence().getDefinition());
     ri.setValue(SRRequestInfo.QUERY_LENGTH_DESCRIPTOR_KEY, query.getSequence().getLength());
     ri.setValue(SRRequestInfo.DATABASE_DESCRIPTOR_KEY, EZFileUtils.getFileName(new File(_dbName)));
-    ri.setValue(SRRequestInfo.PROGRAM_DESCRIPTOR_KEY, _prgName);
+    // switch plast name to blast to conform to Bioinformatics-Core-API SROutput API
+    // otherwise will get into trouble with all other programs such as annotator
+    ri.setValue(SRRequestInfo.PROGRAM_DESCRIPTOR_KEY, "b"+_prgName.substring(1));
     ri.setValue(SRRequestInfo.PRGM_VERSION_DESCRIPTOR_KEY, CmdMessages.getString("Tool.Plast.version"));
-    ri.setValue(SRRequestInfo.PRGM_REFERENCE_DESCRIPTOR_KEY, CmdMessages.getString("Tool.Plast.reference"));
+    ri.setValue(SRRequestInfo.PRGM_REFERENCE_DESCRIPTOR_KEY,  _prgName.toUpperCase() + ": " + 
+        CmdMessages.getString("Tool.Plast.reference"));
 
     // Create Parameters Object
     SRParameters params = CoreSystemConfigurator.getSRFactory().createBParameters();
