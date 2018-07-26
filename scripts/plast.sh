@@ -59,7 +59,7 @@ fi
 
 # *** Java VM 
 KL_JAVA_VM=java
-KL_JAVA_ARGS="-Xms1g -Xmx4g -DKL_HOME=$KL_APP_HOME -DKL_WORKING_DIR=$KL_WORKING_DIR -Djava.library.path=$KL_APP_HOME/native"
+KL_JAVA_ARGS="-Xms2g -Xmx32g -DKL_HOME=$KL_APP_HOME -DKL_WORKING_DIR=$KL_WORKING_DIR -Djava.library.path=$KL_APP_HOME/native"
 
 # *** JARs section
 KL_JAR_LIST_TMP=`\ls $KL_APP_HOME/bin/*.jar`
