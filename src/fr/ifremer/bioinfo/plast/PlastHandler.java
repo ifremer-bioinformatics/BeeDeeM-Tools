@@ -369,12 +369,15 @@ public class PlastHandler implements IRequestListener {
     SRHspScore srHspScores = null;
     SRHspSequence srHspQSeq = null;
     SRHspSequence srHspHSeq = null;
-
+    String msg;
+    
     /* a results may contain hits for one or more queries... */
     while (result.hasNext()) {
       IQueryResult query = result.next();
       nb_queries++;
-
+      msg = String.format(CmdMessages.getString("Tool.Plast.msg12"), nb_queries);
+      LoggerCentral.info(PlastRunner.LOGGER, msg);
+      
       /* the following test: see method comment. */
       if (_srOutputCreated == false) {
         _srOutputCreated = true;
@@ -387,6 +390,7 @@ public class PlastHandler implements IRequestListener {
       if (query.hasNext()) {
         nb_matching_queries++;
       }
+      
       /* ... for each query we may have several hits... */
       while (query.hasNext()) {
         org.inria.genscale.dbscan.api.IHit hit = query.next();
