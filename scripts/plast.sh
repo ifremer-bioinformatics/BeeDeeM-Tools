@@ -17,9 +17,14 @@
 #   KL_WORKING_DIR=an_absolute_path 
 #  if not set, log and working directories are set to /tmp/plast
 #  (each PLAST job should write to its own KL_WORKING_DIR)
+# you can also do "export KL_WORKING_DIR=..." before calling this script.
 #
 # Use program with -h argument to get help.
 # Note: environment variables are accepted in file path.
+#
+# In addition, some parameters can be passed to the JVM for special 
+# configuration purposes:
+# -DKL_DEBUG=true ; if true, if set, log will be in debug mode
 #
 
 function help(){

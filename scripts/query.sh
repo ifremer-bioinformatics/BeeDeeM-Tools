@@ -26,15 +26,13 @@
 # Use program without any arguments to get help.
 # Note: environment variables are accepted in file path.
 # 
+# A log file called UserIndexQuery.log is created within ${java.io.tmpdir}.
+# This default log file can be redirected using JRE variables KL_WORKING_DIR
+# and KL_LOG_FILE. E.g. java ... -DKL_WORKING_DIR=/my-path -DKL_LOG_FILE=query.log
+#
 # In addition, some parameters can be passed to the JVM for special 
 # configuration purposes:
 # -DKL_DEBUG=true ; if true, if set, log will be in debug mode
-# -DKL_WORKING_DIR=an_absolute_path ; if not set, log and working 
-#  directories are set to java.io.tmp
-# -DKL_LOG_FILE=a_file_name ; if set, creates a log file with that 
-#  name within KL_WORKING_DIR
-# -DKL_CONF_DIR=an_absolute_path ; the absolute path to a home-made  
-#  conf directory. If not set, use ${user.dir}/conf.
 #
 
 function help(){
