@@ -14,7 +14,7 @@ It provides:
 * a tool to run [PLAST](http://plast.inria.fr/) high-performance sequence comparison tool
 * a tool to export legacy NCBI BLAST XML results (BLAST or PLAST) as CSV files
 
-All these tools are suited to handle the annotation data available from annotated databanks.
+All these tools are suited to handle the annotation data available from annotated databanks, among others: NCBI Taxonomy Gene Ontology, InterPro and Enzyme Commission classifications.
 
 ## Requirements
 
