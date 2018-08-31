@@ -30,6 +30,7 @@ import org.junit.runners.Suite.SuiteClasses;
   CmdLineCutterTest.class,
   CmdLineIndexerTest.class,
   CmdLineUserQueryTest.class,
+  CmdLineDumperTest.class,
   PlastRunnerTest.class
   })
 public class AllTests {
