@@ -12,6 +12,9 @@ It provides:
 * a tool to index sequence (Fasta, Genbank, Genpept, ENA, EMBL, Uniprot and related)
 * a tool to query index and get back only sequences of interest
 * a tool to run [PLAST](http://plast.inria.fr/) high-performance sequence comparison tool
+* a tool to export legacy NCBI BLAST XML results (BLAST or PLAST) as CSV files
+
+All these tools are suited to handle the annotation data available from annotated databanks.
 
 ## Requirements
 
