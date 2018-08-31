@@ -30,11 +30,6 @@
 	<property name="appjar" value="${appname}.jar" />
 	<property name="apptar" value="${appname}.tar" />
 
-	<property name="rootpkg" value="fr.ifremer.bioinfo.bdm.tools" />
-	<property name="CutterClass" value="${rootpkg}.CmdLineCutter" />
-	<property name="IndexerClass" value="${rootpkg}.CmdLineIndexer" />
-	<property name="QueryClass" value="${rootpkg}.CmdLineUserQuery" />
-
 	<path id="class.path">
 		<pathelement path="${classpath}" />
 		<fileset dir="${jar}">
