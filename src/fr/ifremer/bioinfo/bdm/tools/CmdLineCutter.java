@@ -59,7 +59,7 @@ import fr.ifremer.bioinfo.resources.CmdMessages;
  * Use program without any arguments to get help.<br>
  * Note: environment variables are accepted in file path.<br>
  * 
- * A log file called UserIndexQuery.log is created within ${java.io.tmpdir}.
+ * A log file called CutSequenceFile.log is created within ${java.io.tmpdir}.
  * This default log file can be redirected using JRE variables KL_WORKING_DIR
  * and KL_LOG_FILE. E.g. java ... -DKL_WORKING_DIR=/my-path
  * -DKL_LOG_FILE=query.log<br>
