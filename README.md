@@ -18,9 +18,52 @@ All these tools are suited to handle the annotation data available from annotate
 
 ## Requirements
 
+* Linux or macOS 64bits computer.
+* Java Runtime 1.8+ from Oracle. 
+
 Use a [Java Virtual Machine](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 1.8 (or above) from Oracle. 
 
 *Not tested with any other JVM providers but Oracle... so there is no guarantee that the software will work as expected if not using Oracle's JVM.* 
+
+## Installation
+ 
+### Check your JVM first
+
+On a command-line simply type:
+
+```
+java -version
+```
+An Oracle JVM will display this line:
+
+`Java HotSpot(TM) 64-Bit Server VM`
+
+You do not see that line? Do not go further: we do not guarantee BeeDeeM-Tools be compatible with OpenJDK, gcj, *etc.*
+
+### Procedure
+
+On a command-line simply type the following lines:
+
+```
+cd <where-you-want-to-install-the-software>
+mkdir beedeem-tools-2.0.0
+cd beedeem-tools-2.0.0
+wget https://cloud.ifremer.fr/index.php/s/WQGxuP7bbbA5mFH/download -O beedeem-tools-2.0.0.tar.gz
+gunzip beedeem-tools-2.0.0.tar.gz
+tar -xf beedeem-tools-2.0.0.tar
+rm beedeem-tools-2.0.0.tar
+chmod +x *.sh
+```
+
+That's all folks!
+
+Let's do a little check that software is working fine:
+
+```
+./test.sh -w /tmp
+```
+
+This will run a complete test of all BeeDeeM-Tools.
 
 ## License and dependencies
 
