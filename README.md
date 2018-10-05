@@ -60,10 +60,12 @@ That's all folks!
 Let's do a little check that software is working fine:
 
 ```
-./test.sh -w /tmp
+./test.sh -w /tmp/bdm-tools
 ```
 
 This will run a complete test of all BeeDeeM-Tools.
+
+When done (and test ok), have a look a the `/tmp/bdm-tools` directory. You can review what happened when using the BeeDeeM-Tools. That temporary directory can then be deleted.
 
 ## License and dependencies
 
