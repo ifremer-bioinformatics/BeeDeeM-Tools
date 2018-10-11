@@ -132,5 +132,5 @@ Finally, we get the corresponding query sequences by querying the index:
 <path-to-bdm-tools>/query.sh -w $SCRATCH -d query-idx/GCA_000002265.1_ASM226v1_cds_from_genomic.fna.ld -f GCA_000002265.1_ASM226v1_cds_from_genomic.fna_1.nomatch.uniq.txt > GCA_000002265.1_ASM226v1_cds_from_genomic.fna_1.nomatch.fna
 ```
 
-From there, we could run an additional PLASTx run against a larger bank, e.g. Uniprot_TrEMBL... step easy to do, so it is now shown here.
+From there, we could run an additional PLASTx run against a larger bank, e.g. Uniprot_TrEMBL... step easy to do, so it is not shown here.
 
