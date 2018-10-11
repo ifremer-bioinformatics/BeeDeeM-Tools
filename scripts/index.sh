@@ -83,6 +83,11 @@ KL_JAVA_ARGS="-Xms1g -Xmx4g -DKL_HOME=$KL_APP_HOME -DKL_WORKING_DIR=$KL_WORKING_
 KL_JAR_LIST_TMP=`\ls $KL_APP_HOME/bin/*.jar`
 KL_JAR_LIST=`echo $KL_JAR_LIST_TMP | sed 's/ /:/g'`
 
+# switch to absolute path to avoid wierd behavior later (ln command)
+SEQ_FILE="$(cd "$(dirname "$SEQ_FILE")"; pwd)/$(basename "$SEQ_FILE")"
+INDEX_DIR="$(cd "$(dirname "$INDEX_DIR")"; pwd)/$(basename "$INDEX_DIR")"
+
+# do some checking
 if [  ! "$INDEX_DIR"  ]; then
   error "index directory not provided"
   exit 1
