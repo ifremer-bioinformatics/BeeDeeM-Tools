@@ -16,6 +16,8 @@ It provides:
 
 All these tools are suited to handle the annotation data available from annotated databanks, among others: NCBI Taxonomy Gene Ontology, InterPro and Enzyme Commission classifications.
 
+BeeDeeM-Tools is a suite of extensions to [BeeDeeM](https://github.com/pgdurand/BeeDeeM).
+
 ## Requirements
 
 * Linux or macOS 64bits computer.
@@ -66,6 +68,10 @@ Let's do a little check that software is working fine:
 This will run a complete test of all BeeDeeM-Tools.
 
 When done (and test ok), have a look a the `/tmp/bdm-tools` directory. You can review what happened when using the BeeDeeM-Tools. That temporary directory can then be deleted.
+
+## User manual
+
+Please refere to directory "documentation" of this project and read the [tutorial](https://gitlab.ifremer.fr/bioinfo/BeeDeeM-Tools/blob/master/documentation/tutorial.md).
 
 ## License and dependencies
 
