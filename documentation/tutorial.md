@@ -119,10 +119,12 @@ So, it is quite easy to get all of them:
 
 ```
 # get non matching query IDs
-grep -e '"-","-"' GCA_000002265.1_ASM226v1_cds_from_genomic.fna_1.csv | cut -d',' -f 1 | uniq | sed -e 's/^"//' -e 's/"$//' > GCA_000002265.1_ASM226v1_cds_from_genomic.fna_1.nomatch.uniq.txt
+grep -e '"-","-"' GCA_000002265.1_ASM226v1_cds_from_genomic.fna_1.csv | cut -d',' -f 1 | uniq | sed -e 's/^"//' -e 's/"$//' | cut -d'|' -f 2 > GCA_000002265.1_ASM226v1_cds_from_genomic.fna_1.nomatch.uniq.txt
 # count non-matching query IDs
 wc -l GCA_000002265.1_ASM226v1_cds_from_genomic.fna_1.nomatch.uniq.txt
 ```
+
+Important notice: on the above command, you can see that we use "cut" and "sed" commands. This is a requirement to get only valid sequence IDs without any doudle quotes ( " character), databank stuff (lcl) or ID separator ('|' character), etc.
 
 Finally, we get the corresponding query sequences by querying the index:
 
