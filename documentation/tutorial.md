@@ -129,6 +129,8 @@ Important notice: on the above command, you can see that we use "cut" and "sed" 
 Finally, we get the corresponding query sequences by querying the index:
 
 ```
+# get non matching query sequences in a FASTA file
+#  (adapt to your system: replace $SCRATCH by any other valid tmp storage place)
 <path-to-bdm-tools>/query.sh -w $SCRATCH -d query-idx/GCA_000002265.1_ASM226v1_cds_from_genomic.fna.ld -f GCA_000002265.1_ASM226v1_cds_from_genomic.fna_1.nomatch.uniq.txt > GCA_000002265.1_ASM226v1_cds_from_genomic.fna_1.nomatch.fna
 ```
 
