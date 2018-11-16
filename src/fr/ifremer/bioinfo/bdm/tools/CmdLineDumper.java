@@ -68,7 +68,7 @@ import fr.ifremer.bioinfo.resources.CmdMessages;
  * (see program help for more information about -c argument)
  * <br>
  * 
- * CmdLineDumper -i tests/datafile/hits_with_full_annot.zml -f zml -c "22,23,24,25" -ec "/home1/datawork/pgdurand/biobank/d/Enzyme/current/Enzyme/Enzyme.ldx"<br>
+ * CmdLineDumper -i tests/datafile/hits_with_full_annot.zml -f zml -c "22,23,24,25" -ec "/biobank/d/Enzyme/current/Enzyme/Enzyme.ldx"<br>
  * -> result is dumped on stdout using user-defined columns and providing an EC BeeDeeM index.<br>
  * See program help for more information about -c argument; using an BeeDeeM index enables to expand
  * classification data. However it requires PLAST/BLAST XML/ZML results already contains classification data.
@@ -384,10 +384,10 @@ public class CmdLineDumper {
     dicos = new HashMap<>();
     
     // Sample Biol. Class. BeeDeeM Lucene indexes used to test the tool:
-    //-tax "/home1/datawork/pgdurand/biobank/d/NCBI_Taxonomy/current/NCBI_Taxonomy/NCBI_Taxonomy.ldx"
-    //-go "/home1/datawork/pgdurand/biobank/d/GeneOntology_terms/current/GeneOntology_terms/GeneOntology_terms.ldx"
-    //-ipr "/home1/datawork/pgdurand/biobank/d/InterPro_terms/current/InterPro_terms/InterPro_terms.ldx"
-    //-ec "/home1/datawork/pgdurand/biobank/d/Enzyme/current/Enzyme/Enzyme.ldx"
+    //-tax "/biobank/d/NCBI_Taxonomy/current/NCBI_Taxonomy/NCBI_Taxonomy.ldx"
+    //-go "/biobank/d/GeneOntology_terms/current/GeneOntology_terms/GeneOntology_terms.ldx"
+    //-ipr "/biobank/d/InterPro_terms/current/InterPro_terms/InterPro_terms.ldx"
+    //-ec "/biobank/d/Enzyme/current/Enzyme/Enzyme.ldx"
 
     if (taxPath!=null && new File(taxPath).exists()) {
       msg = String.format(CmdMessages.getString("Tool.Dumper.msg5"), DicoUtils.READER_NCBI_TAXONOMY.toUpperCase(), taxPath);
