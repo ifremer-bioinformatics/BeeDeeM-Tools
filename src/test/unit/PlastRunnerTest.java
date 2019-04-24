@@ -31,6 +31,9 @@ import fr.ifremer.bioinfo.plast.PlastRunner;
 /**
  * A class to test PlastRunner tool. Please note that unit tests for the PLAST
  * software are part of the c++ project. Here, we only test the Java tool layer.
+ * 
+ * Run this code using: -Djava.library.path=native
+ * 
  */
 public class PlastRunnerTest {
 

@@ -21,7 +21,9 @@ import bzh.plealog.bioinfo.api.data.searchresult.SROutput;
 import bzh.plealog.bioinfo.api.data.searchresult.SRParameters;
 import bzh.plealog.bioinfo.api.data.searchresult.SRRequestInfo;
 import bzh.plealog.bioinfo.api.data.searchresult.utils.SRFactory;
+import bzh.plealog.dbmirror.util.Utils;
 import bzh.plealog.dbmirror.util.log.LoggerCentral;
+import bzh.plealog.dbmirror.util.sequence.SeqIOUtils;
 import fr.ifremer.bioinfo.resources.CmdMessages;
 
 /**
@@ -183,7 +185,7 @@ public class PlastHandler implements IRequestListener {
 
     hit = _srFactory.createBHit();
     hit.setHitId(id);
-    hit.setHitAccession(id);
+    hit.setHitAccession(SeqIOUtils.getAccessionFromId(id));
     hit.setHitDef(definition);
     hit.setHitLen(length);
     hit.setHitNum(iteration.countHit() + 1);
