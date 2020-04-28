@@ -80,5 +80,5 @@ Please refere to directory "documentation" of this project and read the [tutoria
 It depends on several thrid-party libraries as stated in the NOTICE.txt file provided with this project.
 
 --
-(c) 2018 - Patrick G. Durand, Ifremer
+(c) 2018-20 - Patrick G. Durand, Ifremer
 
