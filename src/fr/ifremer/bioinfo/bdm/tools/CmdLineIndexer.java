@@ -32,7 +32,7 @@ import bzh.plealog.dbmirror.indexer.LuceneStorageSystem;
 import bzh.plealog.dbmirror.indexer.LuceneUtils;
 import bzh.plealog.dbmirror.indexer.StorageSystem;
 import bzh.plealog.dbmirror.indexer.SwissProtParser;
-import bzh.plealog.dbmirror.main.CmdLineUtils;
+import bzh.plealog.bioinfo.util.CmdLineUtils;
 import bzh.plealog.dbmirror.main.StarterUtils;
 import bzh.plealog.dbmirror.util.conf.DBMSAbstractConfig;
 import bzh.plealog.dbmirror.util.descriptor.DatabankFormat;
@@ -165,7 +165,7 @@ public class CmdLineIndexer {
       return false;
     }
     msg = String.format(CmdMessages.getString("Tool.Indexer.msg3"), parser.getEntries());
-    System.out.println(msg);
+    //System.out.println(msg);
     LoggerCentral.info(LOGGER, msg);
     return bRet;
   }
@@ -192,7 +192,7 @@ public class CmdLineIndexer {
 
     // handle the command-line
     options = getCmdLineOptions();
-    cmdLine = CmdLineUtils.handleArguments(args, options, toolName);
+    cmdLine = bzh.plealog.dbmirror.main.CmdLineUtils.handleArguments(args, options, toolName);
     if (cmdLine == null) {
       return false;
     }

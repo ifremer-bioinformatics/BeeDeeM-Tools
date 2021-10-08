@@ -28,7 +28,8 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import bzh.plealog.dbmirror.main.CmdLineUtils;
+import bzh.plealog.bioinfo.util.CmdLineUtils;
+
 import bzh.plealog.dbmirror.main.StarterUtils;
 import bzh.plealog.dbmirror.util.Utils;
 import bzh.plealog.dbmirror.util.conf.DBMSAbstractConfig;
@@ -366,7 +367,7 @@ public class CmdLineCutter {
 
     // handle the command-line
     options = getCmdLineOptions();
-    cmdLine = CmdLineUtils.handleArguments(args, options, toolName);
+    cmdLine = bzh.plealog.dbmirror.main.CmdLineUtils.handleArguments(args, options, toolName);
     if (cmdLine == null) {
       return false;
     }

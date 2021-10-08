@@ -54,7 +54,7 @@ public class CmdLineDumperTest {
     // Called libraries (e.g. BeeDeeM sequence manager framework) rely on Log4J
     BasicConfigurator.configure();
     data_file = File.createTempFile("dumper", ".tmp", new File(System.getProperty("java.io.tmpdir")));
-    data_file.deleteOnExit();
+    //data_file.deleteOnExit();
   }
 
   @AfterClass
@@ -116,6 +116,7 @@ public class CmdLineDumperTest {
     // Job generated file OK?
     DBMSExecNativeCommand runner = new DBMSExecNativeCommand();
     String cmd = "diff "+data_file.getAbsolutePath()+" "+DATA_PATH+DATA_FILE_3_REF;
+    System.err.println(cmd);
     runner.execute(cmd);
     assertTrue(runner.getExitCode()==0);
   }
